@@ -68,6 +68,7 @@ dkms.conf
 
 # qmake generate file
 .qmake.stash
+Makefile
 Makefile.Debug
 Makefile.Release
 ./debug/*
