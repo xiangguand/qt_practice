@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "C:\\Users\\zxpay\\Desktop\\qt5\\qt5-build\\qtbase\\include",
+                "C:\\Users\\zxpay\\Desktop\\qt5\\qt5-build\\qtbase\\include\\QtCore",
+                "C:\\Users\\zxpay\\Desktop\\qt5\\qt5-build\\qtbase\\include\\QtGui",
+                "C:\\Users\\zxpay\\Desktop\\qt5\\qt5-build\\qtbase\\include\\QtQml",
+                "C:\\Users\\zxpay\\Desktop\\qt5\\qt5-build\\qtbase\\include\\QtQuick",
+                "C:\\Users\\zxpay\\Desktop\\qt5\\qt5-build\\qtbase\\include\\QtQuickControls2",
+                "C:\\Users\\zxpay\\Desktop\\qt5\\qt5-build\\qtbase\\include\\QtQmlDebug",
+                "C:\\mingw64\\include"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.19041.0",
+            "compilerPath": "C:\\mingw64\\bin\\g++",
+            "cppStandard": "c++11",
+            "intelliSenseMode": "windows-msvc-x64"
+        }
+    ],
+    "version": 4
+}
