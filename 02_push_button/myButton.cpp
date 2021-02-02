@@ -15,9 +15,11 @@ void myButton::resetClick(void) {
     myButton::counter = 0;
     myButton::setText();
 }
+
 void myButton::setQObectText(QObject *obj) {
     myButton::text = obj;
 }
+
 void myButton::setText(void) {
     if(myButton::text != NULL) {
         string temp = "counter ";
