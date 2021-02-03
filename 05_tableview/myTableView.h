@@ -1,5 +1,5 @@
-#ifndef MYBABLEVIEW_H
-#define MYBABLEVIEW_H
+#ifndef MYTABLEVIEW_H
+#define MYTABLEVIEW_H
 
 #include "QObject"
 #include "QDebug"
@@ -16,4 +16,4 @@ public slots:
 };
 
 
-#endif /* MYBABLEVIEW_H */
+#endif /* MYTABLEVIEW_H */

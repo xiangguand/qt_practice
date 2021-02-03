@@ -3,6 +3,8 @@
         "*.json": "json",
         "iostream": "cpp",
         "qdebug": "cpp",
-        "qqmlapplicationengine": "cpp"
+        "qqmlapplicationengine": "cpp",
+        "qquickitem": "cpp",
+        "qguiapplication": "cpp"
     }
 }

@@ -20,8 +20,7 @@
             ],
             "windowsSdkVersion": "10.0.19041.0",
             "compilerPath": "C:\\mingw64\\bin\\g++",
-            "cppStandard": "c++11",
-            "intelliSenseMode": "windows-msvc-x64"
+            "cppStandard": "c++11"
         }
     ],
     "version": 4
