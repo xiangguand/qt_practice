@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>ui/main.qml</file>
+        <file>ui/ShowHelloWorld.qml</file>
+        <file>ui/ShowTest.qml</file>
+        <file>ui/ShowBasicUI.qml</file>
+    </qresource>
+</RCC>
