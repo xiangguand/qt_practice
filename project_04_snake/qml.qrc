@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>ui/main.qml</file>
+        <file>ui/Snakebody.qml</file>
+        <file>ui/test.qml</file>
+    </qresource>
+</RCC>
