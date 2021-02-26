@@ -1,24 +1,41 @@
-#ifndef snake_H
-#define snake_H
+#ifndef SNAKE_H
+#define SNAKE_H
 
 #include "QObject"
 #include "QDebug"
+#include "QThread"
+#include "common.h"
+#include "handleKeyboard.h"
 
-class snake : public QObject {
+#define WINDOW_H    20
+#define WINDOW_L    24
+
+
+class Snake : public QObject {
 public:
-    snake(QObject *obj);
-    snake(void);
-    ~snake(void);
+    GetKeyboard getKeyboard;
+    QThread keyThread;
+    Snake(QObject *obj);
+    Snake(void);
+    ~Snake(void);
     void setRootQObject(QObject *obj);
+    void closeAll(void);
 private:
     QObject *rootQObject;
+    int dir;
+    snake_pos_t pos;
+    int getWindowPos(void);
 
 Q_OBJECT
 public slots:
     void startClick(void);
     void stopClick(void);
     void testClick(void);
+    void updateHandler(void);
+    void keyboardHandler(int dir);
+
+
 };
 
 
-#endif /* snake_H */
+#endif /* SNAKE_H */

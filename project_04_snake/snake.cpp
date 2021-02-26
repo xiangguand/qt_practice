@@ -1,14 +1,17 @@
 #include <string>
-#include "QDebug"
+#include <QDebug>
+#include <QTimer>
+#include <QThread>
 #include "snake.h"
+#include "handleKeyboard.h"
 
 using namespace std;
 
-snake::snake(void) {
+Snake::Snake(void) {
     qDebug() << "Constructor snake";
 }
 
-snake::snake(QObject *obj) {
+Snake::Snake(QObject *obj) {
     if(obj == NULL) {
         qDebug() << "RootQObject is NULL";
     }
@@ -18,32 +21,65 @@ snake::snake(QObject *obj) {
     }
 }
 
-snake::~snake(void) {
+Snake::~Snake(void) {
     qDebug() << "Deconstruct snake";
+    this->keyThread.quit();
 }
 
-void snake::setRootQObject(QObject *obj) {
+void Snake::setRootQObject(QObject *obj) {
     this->rootQObject = obj;
 }
 
-void snake::startClick(void) {
+void Snake::startClick(void) {
     qDebug() << "Start click";
-    
+    // create the snake head
+    this->pos.x = (WINDOW_H>>1);
+    this->pos.y = (WINDOW_L>>1);
+    qDebug() << getWindowPos();
+    this->rootQObject->findChild<QObject *>(QStringLiteral("skB%1").arg(getWindowPos()))->setProperty("visible", true);
+    this->rootQObject->findChild<QObject *>(QStringLiteral("skB%1").arg(getWindowPos()))->setProperty("color", "red");
+
 }
 
-void snake::stopClick(void) {
+void Snake::stopClick(void) {
     qDebug() << "Stop click";
+
 }
 
-void snake::testClick(void) {
+void Snake::testClick(void) {
     qDebug() << "Test click";
-    static char ww = true;
-    if(ww) ww = false;
-    else ww = true;
-    for(int i=0;i<20*24;i++) {
-        QObject *obj = this->rootQObject->findChild<QObject *>(QStringLiteral("skB%1").arg(i));
-        obj->setProperty("visible", ww);
-    }
 
 }
 
+void Snake::keyboardHandler(int dir) {
+    qDebug() << "Handle keyboard: " << dir;
+    this->dir = dir;
+}
+
+void Snake::updateHandler(void) {
+    this->rootQObject->findChild<QObject *>(QStringLiteral("skB%1").arg(getWindowPos()))->setProperty("visible", false);
+
+    if(this->dir == DIR_UP) {
+        this->pos.x--;
+    }
+    else if(this->dir == DIR_DOWN) {
+        this->pos.x++;
+    }
+    else if(this->dir == DIR_LEFT) {
+        this->pos.y--;
+    }
+    else if(this->dir == DIR_RIGHT) {
+        this->pos.y++;
+    }
+    this->rootQObject->findChild<QObject *>(QStringLiteral("skB%1").arg(getWindowPos()))->setProperty("visible", true);
+}
+
+int Snake::getWindowPos(void) {
+    return this->pos.x + WINDOW_H*this->pos.y;
+}
+
+void Snake::closeAll(void) {
+    for(int i=0;i<20*24;i++) {
+        this->rootQObject->findChild<QObject *>(QStringLiteral("skB%1").arg(i))->setProperty("visible", false);
+    }
+}

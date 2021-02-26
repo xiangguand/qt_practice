@@ -1,5 +1,5 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'snake.h'
+** Meta object code from reading C++ file 'handleKeyboard.h'
 **
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.15.3)
 **
@@ -7,11 +7,11 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../snake.h"
+#include "../handleKeyboard.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'snake.h' doesn't include <QObject>."
+#error "The header file 'handleKeyboard.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
 #error "This file was generated using the moc from 5.15.3. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -21,39 +21,34 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_Snake_t {
-    QByteArrayData data[8];
-    char stringdata0[72];
+struct qt_meta_stringdata_GetKeyboard_t {
+    QByteArrayData data[4];
+    char stringdata0[36];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_Snake_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_GetKeyboard_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_Snake_t qt_meta_stringdata_Snake = {
+static const qt_meta_stringdata_GetKeyboard_t qt_meta_stringdata_GetKeyboard = {
     {
-QT_MOC_LITERAL(0, 0, 5), // "Snake"
-QT_MOC_LITERAL(1, 6, 10), // "startClick"
-QT_MOC_LITERAL(2, 17, 0), // ""
-QT_MOC_LITERAL(3, 18, 9), // "stopClick"
-QT_MOC_LITERAL(4, 28, 9), // "testClick"
-QT_MOC_LITERAL(5, 38, 13), // "updateHandler"
-QT_MOC_LITERAL(6, 52, 15), // "keyboardHandler"
-QT_MOC_LITERAL(7, 68, 3) // "dir"
+QT_MOC_LITERAL(0, 0, 11), // "GetKeyboard"
+QT_MOC_LITERAL(1, 12, 14), // "handleKeyboard"
+QT_MOC_LITERAL(2, 27, 0), // ""
+QT_MOC_LITERAL(3, 28, 7) // "key_dir"
 
     },
-    "Snake\0startClick\0\0stopClick\0testClick\0"
-    "updateHandler\0keyboardHandler\0dir"
+    "GetKeyboard\0handleKeyboard\0\0key_dir"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_Snake[] = {
+static const uint qt_meta_data_GetKeyboard[] = {
 
  // content:
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       1,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -61,74 +56,62 @@ static const uint qt_meta_data_Snake[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   39,    2, 0x0a /* Public */,
-       3,    0,   40,    2, 0x0a /* Public */,
-       4,    0,   41,    2, 0x0a /* Public */,
-       5,    0,   42,    2, 0x0a /* Public */,
-       6,    1,   43,    2, 0x0a /* Public */,
+       1,    1,   19,    2, 0x0a /* Public */,
 
  // slots: parameters
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,    7,
+    QMetaType::Void, QMetaType::Int,    3,
 
        0        // eod
 };
 
-void Snake::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void GetKeyboard::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        auto *_t = static_cast<Snake *>(_o);
+        auto *_t = static_cast<GetKeyboard *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->startClick(); break;
-        case 1: _t->stopClick(); break;
-        case 2: _t->testClick(); break;
-        case 3: _t->updateHandler(); break;
-        case 4: _t->keyboardHandler((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 0: _t->handleKeyboard((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     }
 }
 
-QT_INIT_METAOBJECT const QMetaObject Snake::staticMetaObject = { {
+QT_INIT_METAOBJECT const QMetaObject GetKeyboard::staticMetaObject = { {
     QMetaObject::SuperData::link<QObject::staticMetaObject>(),
-    qt_meta_stringdata_Snake.data,
-    qt_meta_data_Snake,
+    qt_meta_stringdata_GetKeyboard.data,
+    qt_meta_data_GetKeyboard,
     qt_static_metacall,
     nullptr,
     nullptr
 } };
 
 
-const QMetaObject *Snake::metaObject() const
+const QMetaObject *GetKeyboard::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *Snake::qt_metacast(const char *_clname)
+void *GetKeyboard::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_Snake.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_GetKeyboard.stringdata0))
         return static_cast<void*>(this);
     return QObject::qt_metacast(_clname);
 }
 
-int Snake::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int GetKeyboard::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QObject::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 1)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 1;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 1)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 5;
+        _id -= 1;
     }
     return _id;
 }

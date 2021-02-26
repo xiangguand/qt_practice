@@ -4,6 +4,7 @@
 #include <QDebug>
 #include "snake.h"
 
+
 int main(int argc, char *argv[]) {
     qDebug() << "Start";
     QGuiApplication app(argc, argv);
@@ -12,8 +13,8 @@ int main(int argc, char *argv[]) {
 
     QObject *rootQObject = engine.rootObjects()[0];
     
-    snake snake(rootQObject);
-    
+    Snake snake(rootQObject);
+
     QObject *item = engine.rootObjects().first();
     QObject::connect(item, SIGNAL(startSignal()),
                       &snake, SLOT(startClick()));
@@ -21,6 +22,14 @@ int main(int argc, char *argv[]) {
                       &snake, SLOT(stopClick()));
     QObject::connect(item, SIGNAL(testSignal()),
                       &snake, SLOT(testClick()));
+
+    // Define the keyboard signal
+    QObject::connect(item, SIGNAL(keyboardSignal(int)),
+                      &snake, SLOT(keyboardHandler(int)));
+
+    // Define the timer signal
+    QObject::connect(item, SIGNAL(updateSignal()),
+                      &snake, SLOT(updateHandler()));
 
     qDebug() << "Execute";
     qDebug() << "=========================";
