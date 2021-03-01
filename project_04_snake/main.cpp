@@ -27,6 +27,18 @@ int main(int argc, char *argv[]) {
     QObject::connect(item, SIGNAL(keyboardSignal(int)),
                       &snake, SLOT(keyboardHandler(int)));
 
+    // Define the gameover signal
+    QObject::connect(&snake, SIGNAL(gameoverSignalSend()),
+                      item, SLOT(gameoverSlot()));
+
+    // Define the gameover signal
+    QObject::connect(&snake, SIGNAL(scoreSignalSend(int)),
+                      item, SLOT(scoreSlot(int)));
+    
+    // Define the timer interval signal
+    QObject::connect(&snake, SIGNAL(timerIntervelSignal(int)),
+                      item, SLOT(timerIntervalSlot(int)));
+
     // Define the timer signal
     QObject::connect(item, SIGNAL(updateSignal()),
                       &snake, SLOT(updateHandler()));

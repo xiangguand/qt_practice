@@ -13,11 +13,27 @@ ApplicationWindow {
 
     
     property var startFlag : false 
+    property var gameoverFlag : false
+    property int score : 0
 
     signal startSignal()
     signal stopSignal()
     signal testSignal()
     signal updateSignal()
+
+    function gameoverSlot() {
+        gameoverFlag = true
+        updateTimer.running = false
+        console.debug("gameover")
+    }
+
+    function scoreSlot(_score : int) {
+        scoreText.text = _score.toString()
+    }
+
+    function timerIntervalSlot(intvl : int) {
+        updateTimer.interval = intvl
+    }
 
     // Define the keyboard signal
     signal keyboardSignal(int keydir)
