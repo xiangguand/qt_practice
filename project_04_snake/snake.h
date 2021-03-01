@@ -5,7 +5,6 @@
 #include "QDebug"
 #include "QThread"
 #include "common.h"
-#include "handleKeyboard.h"
 
 #define DEFAULT_TIMER_INTERVAL  250
 #define TIMER_INTERVAL_MIN      100
@@ -21,7 +20,6 @@
 
 class Snake : public QObject {
 public:
-    GetKeyboard getKeyboard;
     QThread keyThread;
     Snake(QObject *obj);
     Snake(void);
@@ -50,7 +48,6 @@ signals:
 public slots:
     void startClick(void);
     void stopClick(void);
-    void testClick(void);
     void updateHandler(void);
     void keyboardHandler(int dir);
 

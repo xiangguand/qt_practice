@@ -3,22 +3,19 @@ import QtQuick.Window 2.2
 import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.15
 
-
-
 ApplicationWindow {
     id: root
     visible: true
     width: 1800
     height: 1200
 
-    
-    property var startFlag : false 
+    property var startFlag : false
+    property var stopFlag : false 
     property var gameoverFlag : false
     property int score : 0
 
     signal startSignal()
     signal stopSignal()
-    signal testSignal()
     signal updateSignal()
 
     function gameoverSlot() {
@@ -119,6 +116,7 @@ ApplicationWindow {
             onClicked: {
                 startSignal()
                 updateTimer.running = true
+                btnStart.text = "restart"
             }
             Timer {
                 id: updateTimer
@@ -147,7 +145,7 @@ ApplicationWindow {
         }
         Button {
             id: btnStop
-            text: "stop"
+            text: "pause"
             width: parent.width
             anchors.top: funcWindow.top
             anchors.topMargin: 600
@@ -155,19 +153,32 @@ ApplicationWindow {
             font.pointSize: 24
             onClicked: {
                 stopSignal()
-                updateTimer.running = false
+                if(stopFlag) {
+                    updateTimer.running = true
+                    stopFlag = false
+                    btnStop.text = "pause"
+                }
+                else {
+                    updateTimer.running = false
+                    stopFlag = true
+                    btnStop.text = "resume"
+                }
             }
-        }
-        Button {
-            id: btnTest
-            text: "test"
-            width: parent.width
-            anchors.top: funcWindow.top
-            anchors.topMargin: 800
-            font.bold: true
-            font.pointSize: 24
-            onClicked: {
-                testSignal()
+            Keys.onUpPressed: {
+                console.debug("Up")
+                keyboardSignal(1)
+            }
+            Keys.onDownPressed: {
+                console.debug("Down")
+                keyboardSignal(2)
+            }
+            Keys.onLeftPressed: {
+                console.debug("Left")
+                keyboardSignal(3)
+            }
+            Keys.onRightPressed: {
+                console.debug("Right")
+                keyboardSignal(4)
             }
         }
     }

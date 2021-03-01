@@ -20,8 +20,6 @@ int main(int argc, char *argv[]) {
                       &snake, SLOT(startClick()));
     QObject::connect(item, SIGNAL(stopSignal()),
                       &snake, SLOT(stopClick()));
-    QObject::connect(item, SIGNAL(testSignal()),
-                      &snake, SLOT(testClick()));
 
     // Define the keyboard signal
     QObject::connect(item, SIGNAL(keyboardSignal(int)),
@@ -42,6 +40,14 @@ int main(int argc, char *argv[]) {
     // Define the timer signal
     QObject::connect(item, SIGNAL(updateSignal()),
                       &snake, SLOT(updateHandler()));
+
+    QObject *start = rootQObject->findChild<QObject *>("start");
+    if(start == NULL) {
+        qDebug() << "not create";
+    }
+    else {
+        qDebug() << "find";
+    }
 
     qDebug() << "Execute";
     qDebug() << "=========================";

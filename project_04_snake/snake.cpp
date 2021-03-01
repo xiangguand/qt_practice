@@ -39,6 +39,7 @@ void Snake::startClick(void) {
     HEAD_POS_Y = (WINDOW_L>>1);
 
     this->num = 1;
+    this->score = 0;
     for(int i=0;i<WINDOW_MAX;i++) {
         this->rootQObject->findChild<QObject *>(QStringLiteral("skB%1").arg(i))->setProperty("visible", false);
         this->rootQObject->findChild<QObject *>(QStringLiteral("skB%1").arg(i))->setProperty("color", "black");
@@ -56,11 +57,6 @@ void Snake::startClick(void) {
 
 void Snake::stopClick(void) {
     qDebug() << "Stop click";
-    gameoverSignalSend();
-}
-
-void Snake::testClick(void) {
-    qDebug() << "Test click";
 }
 
 void Snake::keyboardHandler(int dir) {
