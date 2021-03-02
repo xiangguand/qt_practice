@@ -2,10 +2,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <QDebug>
-#include <QTimer>
-#include <QThread>
 #include "snake.h"
-#include "handleKeyboard.h"
 
 using namespace std;
 
@@ -25,7 +22,6 @@ Snake::Snake(QObject *obj) {
 
 Snake::~Snake(void) {
     qDebug() << "Deconstruct snake";
-    this->keyThread.quit();
 }
 
 void Snake::setRootQObject(QObject *obj) {

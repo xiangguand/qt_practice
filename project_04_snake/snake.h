@@ -1,9 +1,8 @@
 #ifndef SNAKE_H
 #define SNAKE_H
 
-#include "QObject"
-#include "QDebug"
-#include "QThread"
+#include <QObject>
+#include <QDebug>
 #include "common.h"
 
 #define DEFAULT_TIMER_INTERVAL  250
@@ -20,7 +19,6 @@
 
 class Snake : public QObject {
 public:
-    QThread keyThread;
     Snake(QObject *obj);
     Snake(void);
     ~Snake(void);
