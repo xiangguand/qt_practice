@@ -58,13 +58,27 @@ ApplicationWindow {
         border.color: "black"
         border.width: 5
 
-        Component.onCompleted: {
-            for(var j = 0; j < 10 ; j++) {
-                for (var i = 0; i < 20; i++)  {   
-                    addChildRect("skB"+String(i+20*j), tetrisBattleWindow.x+50*j, tetrisBattleWindow.y+50*i+50, 50, 50)
+        // Component.onCompleted: {
+        //     for(var j = 0; j < 10 ; j++) {
+        //         for (var i = 0; i < 20; i++)  {   
+        //             addChildRect("skB"+String(i+20*j), tetrisBattleWindow.x+50*j, tetrisBattleWindow.y+50*i+50, 50, 50)
+        //         }
+        //     }
+        // }
+        Grid {
+            rows: 20; columns: 10
+            Repeater { 
+                model: 200
+                Rectangle {
+                    width: 50
+                    height: 50
+                    color: "slategray"
+                    border.color: "black"
                 }
             }
         }
+
+
     }
 
     // Show the score
