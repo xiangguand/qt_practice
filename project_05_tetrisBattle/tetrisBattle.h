@@ -16,7 +16,8 @@ signals:
 
 
 public slots:
-
+    void startHandler(void);
+    void stopHandler(void);
 
 };
 

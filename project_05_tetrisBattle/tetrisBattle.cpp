@@ -15,3 +15,13 @@ TetrisBattle::TetrisBattle(void) {
 TetrisBattle::~TetrisBattle(void) {
     qDebug() << "Deconstruct TetrisBattle";
 }
+
+void TetrisBattle::startHandler(void) {
+    qDebug() << "start";
+}
+
+void TetrisBattle::stopHandler(void) {
+    qDebug() << "stop";
+}
+
+

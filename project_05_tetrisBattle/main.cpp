@@ -14,6 +14,12 @@ int main(int argc, char *argv[]) {
     QObject *rootQObject = engine.rootObjects()[0];
     QObject *item = engine.rootObjects().first();
 
+    TetrisBattle tetris;
+
+    QObject::connect(item, SIGNAL(startSignal()),
+                      &tetris, SLOT(startHandler()));
+    QObject::connect(item, SIGNAL(stopSignal()),
+                      &tetris, SLOT(stopHandler()));
 
     qDebug() << "Execute";
     qDebug() << "=========================";
