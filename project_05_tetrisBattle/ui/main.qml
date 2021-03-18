@@ -10,19 +10,23 @@ ApplicationWindow {
 
     signal startSignal()
     signal stopSignal()
+    signal updateSignal()
+    signal keyboardSignal(int keydir)
 
-    function addChildRect(id, x, y, width, height) {
-        var component;
-        component = Qt.createComponent("TetrisUnit.qml");
-        component.createObject(this, {
-                               id:id,
-                               objectName:id,
-                               x:x,
-                               y:y,
-                               color:"transparent",
-                               width:width,
-                               height:height,
-                               visible:true});
+    // Create object
+    function addComponent(componentName: string, x: int, y: int, color: string) {
+        var comp = Qt.createComponent("TetrisUnit.qml")
+        var sprite = comp.createObject(tetrisBattleWindow)
+        sprite.objectName = componentName
+        sprite.x = x
+        sprite.y = y
+        sprite.color = color
+        console.debug("create object")
+        return sprite
+    }
+
+    function timerIntervalSlot(intvl : int) {
+        updateTimer.interval = intvl
     }
     
     menuBar: MenuBar {
@@ -55,16 +59,10 @@ ApplicationWindow {
         
         width: 500
         height: 1000
+        
         border.color: "black"
         border.width: 5
 
-        // Component.onCompleted: {
-        //     for(var j = 0; j < 10 ; j++) {
-        //         for (var i = 0; i < 20; i++)  {   
-        //             addChildRect("skB"+String(i+20*j), tetrisBattleWindow.x+50*j, tetrisBattleWindow.y+50*i+50, 50, 50)
-        //         }
-        //     }
-        // }
         Grid {
             rows: 20; columns: 10
             Repeater { 
@@ -77,8 +75,6 @@ ApplicationWindow {
                 }
             }
         }
-
-
     }
 
     // Show the score
@@ -90,6 +86,7 @@ ApplicationWindow {
 
         width: 500
         height: 1000
+        focus: true
         border.color: "black"
         border.width: 5
 
@@ -118,6 +115,31 @@ ApplicationWindow {
 
             onClicked: {
                 startSignal();
+                updateTimer.running = true
+            }
+
+            Timer {
+                id: updateTimer
+                interval: 1000; running: false; repeat: true;
+                onTriggered: {
+                    updateSignal()
+                }
+            }
+            Keys.onUpPressed: {
+                console.debug("Up")
+                keyboardSignal(1)
+            }
+            Keys.onDownPressed: {
+                console.debug("Down")
+                keyboardSignal(2)
+            }
+            Keys.onLeftPressed: {
+                console.debug("Left")
+                keyboardSignal(3)
+            }
+            Keys.onRightPressed: {
+                console.debug("Right")
+                keyboardSignal(4)
             }
         }
 
@@ -132,6 +154,7 @@ ApplicationWindow {
             font.pointSize: 24
             onClicked: {
                 stopSignal()
+                updateTimer.running = false
             }
         }
     }

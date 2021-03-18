@@ -14,13 +14,20 @@ int main(int argc, char *argv[]) {
     QObject *rootQObject = engine.rootObjects()[0];
     QObject *item = engine.rootObjects().first();
 
-    TetrisBattle tetris;
+    TetrisBattle tetris(rootQObject);
 
     QObject::connect(item, SIGNAL(startSignal()),
                       &tetris, SLOT(startHandler()));
     QObject::connect(item, SIGNAL(stopSignal()),
                       &tetris, SLOT(stopHandler()));
-
+    QObject::connect(&tetris, SIGNAL(test_signal(QString, int, int, QString)),
+                      item, SLOT(addComponent(QString, int, int, QString)));
+    // Define the keyboard signal
+    QObject::connect(item, SIGNAL(keyboardSignal(int)),
+                      &tetris, SLOT(keyboardHandler(int)));
+    QObject::connect(item, SIGNAL(updateSignal()),
+                      &tetris, SLOT(updateHandler()));
+                      
     qDebug() << "Execute";
     qDebug() << "=========================";
     return app.exec();

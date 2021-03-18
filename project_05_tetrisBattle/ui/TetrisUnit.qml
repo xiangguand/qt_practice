@@ -4,8 +4,7 @@ Rectangle {
     id: tetrixUnit
     width: 50
     height: 50
-    color: "transparent"
-    border.color: "red"
+    border.color: "black"
     border.width: 1
 }
 
