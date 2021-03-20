@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
                       &tetris, SLOT(startHandler()));
     QObject::connect(item, SIGNAL(stopSignal()),
                       &tetris, SLOT(stopHandler()));
-    QObject::connect(&tetris, SIGNAL(test_signal(QString, int, int, QString)),
+    QObject::connect(&tetris, SIGNAL(createRectsignal(QString, int, int, QString)),
                       item, SLOT(addComponent(QString, int, int, QString)));
     // Define the keyboard signal
     QObject::connect(item, SIGNAL(keyboardSignal(int)),

@@ -13,16 +13,21 @@ ApplicationWindow {
     signal updateSignal()
     signal keyboardSignal(int keydir)
 
+    property var btState : false
+
     // Create object
     function addComponent(componentName: string, x: int, y: int, color: string) {
         var comp = Qt.createComponent("TetrisUnit.qml")
-        var sprite = comp.createObject(tetrisBattleWindow)
-        sprite.objectName = componentName
-        sprite.x = x
-        sprite.y = y
-        sprite.color = color
+        var rect = comp.createObject(tetrisBattleWindow)
+        rect.objectName = componentName
+        rect.x = x
+        rect.y = y
+        rect.color = color
+        if(x < 0 || y < 0) {
+            rect.visible = false
+        }
         console.debug("create object")
-        return sprite
+        return rect
     }
 
     function timerIntervalSlot(intvl : int) {
@@ -46,7 +51,15 @@ ApplicationWindow {
                 }
             }
         }
+        Timer {
+            id: updateTimer
+            interval: 1000; running: false; repeat: true;
+            onTriggered: {
+                updateSignal()
+            }
+        }
     }
+
 
     // Tetris battle (10X20), each rectangle (50X50)
     // window 500X1000
@@ -87,8 +100,43 @@ ApplicationWindow {
         width: 500
         height: 1000
         focus: true
+        activeFocusOnTab: true
         border.color: "black"
         border.width: 5
+        Keys.onPressed: {
+            if (event.key == Qt.Key_Up) {
+                console.debug("CW")
+            keyboardSignal(1)
+            }
+            else if(event.key == Qt.Key_Down) {
+                console.debug("Down")
+            keyboardSignal(2)
+            }
+            else if(event.key == Qt.Key_Left) {
+                console.debug("Left")
+                keyboardSignal(3)
+            }
+            else if(event.key == Qt.Key_Right) {
+                console.debug("Right")
+                keyboardSignal(4)
+            }
+            else if(event.key == Qt.Key_x || event.key == Qt.Key_X) {
+                console.debug("X")
+                keyboardSignal(5)
+            }
+            else if(event.key == Qt.Key_c || event.key == Qt.Key_C) {
+                console.debug("C")
+                keyboardSignal(6)
+            }
+            else if(event.key == Qt.Key_z || event.key == Qt.Key_Z) {
+                console.debug("Z")
+                keyboardSignal(7)
+            }
+            else if(event.key == Qt.Key_Space) {
+                console.debug("Key_Space")
+                keyboardSignal(8)
+            }
+        }
 
         Text {
             id: scoreTxt
@@ -104,8 +152,11 @@ ApplicationWindow {
         }
 
         Button {
+            id: startBt
             text: qsTr("Start")
             width: parent.width - 20
+            checkable: true
+            checked: false
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 200
@@ -114,32 +165,12 @@ ApplicationWindow {
             font.pointSize: 24
 
             onClicked: {
-                startSignal();
-                updateTimer.running = true
-            }
-
-            Timer {
-                id: updateTimer
-                interval: 1000; running: false; repeat: true;
-                onTriggered: {
-                    updateSignal()
+                if(!btState) {
+                    startSignal();
+                    updateTimer.running = true
                 }
-            }
-            Keys.onUpPressed: {
-                console.debug("Up")
-                keyboardSignal(1)
-            }
-            Keys.onDownPressed: {
-                console.debug("Down")
-                keyboardSignal(2)
-            }
-            Keys.onLeftPressed: {
-                console.debug("Left")
-                keyboardSignal(3)
-            }
-            Keys.onRightPressed: {
-                console.debug("Right")
-                keyboardSignal(4)
+                startBt.checked = true
+                btState = true
             }
         }
 
@@ -155,6 +186,8 @@ ApplicationWindow {
             onClicked: {
                 stopSignal()
                 updateTimer.running = false
+                startBt.checked = false
+                btState = false
             }
         }
     }
