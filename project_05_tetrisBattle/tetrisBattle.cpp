@@ -241,16 +241,12 @@ void TetrisBattle::checkLines(void) {
         }
     }
 
-    // for(auto i=0;i<cutRow.size();i++) {
-    //     qDebug() << "cutRow: " << cutRow[i];
-    // }
-
     // @TODO update the score
     qDebug() << "lines: " << lines;
     
     if(lines > 0) {
         QObject *temp;
-        for(auto l=0;l<whichLine.size();l++) {
+        for(std::vector<int>::size_type l=0;l<whichLine.size();l++) {
             for(int c=0;c<TETRIS_WIDTH;c++) {
                 temp = this->root->findChild<QObject *>(QStringLiteral("rect%1").arg(whichLine[l]+c*TETRIS_HEIGHT));
                 temp->setProperty("visible", false);
@@ -265,7 +261,7 @@ void TetrisBattle::checkLines(void) {
         int incLine[TETRIS_HEIGHT];
         for(int i=0;i<TETRIS_HEIGHT;i++) {
             int cnt = 0;
-            for(int l=0;l<whichLine.size();l++) {
+            for(std::vector<int>::size_type l=0;l<whichLine.size();l++) {
                 if(i <= whichLine[l]) {
                     cnt++;
                 }
