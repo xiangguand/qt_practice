@@ -12,6 +12,7 @@ ApplicationWindow {
     signal stopSignal()
     signal updateSignal()
     signal keyboardSignal(int keydir)
+    // signal objectCreatedSignal(Ot)
 
     property var btState : false
 
@@ -26,9 +27,14 @@ ApplicationWindow {
         if(x < 0 || y < 0) {
             rect.visible = false
         }
-        console.debug("create object")
-        return rect
     }
+
+    function destroyComponent(componentName: object) {
+        console.debug("Destroy" + componentName)
+        console.debug(comp)
+
+    }
+    
 
     function timerIntervalSlot(intvl : int) {
         updateTimer.interval = intvl

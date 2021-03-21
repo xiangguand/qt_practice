@@ -4,7 +4,7 @@ QT += qml quick gui widgets
 CONFIG += c++11
 CONFIG += console
 
-SOURCES += main.cpp tetrisBattle.cpp
+SOURCES += main.cpp tetrisBattle.cpp support_math.cpp
 
 RESOURCES += qml.qrc
 

@@ -33,7 +33,7 @@ struct qt_meta_stringdata_TetrisBattle_t {
 static const qt_meta_stringdata_TetrisBattle_t qt_meta_stringdata_TetrisBattle = {
     {
 QT_MOC_LITERAL(0, 0, 12), // "TetrisBattle"
-QT_MOC_LITERAL(1, 13, 16), // "createRectsignal"
+QT_MOC_LITERAL(1, 13, 16), // "createRectSignal"
 QT_MOC_LITERAL(2, 30, 0), // ""
 QT_MOC_LITERAL(3, 31, 13), // "componentName"
 QT_MOC_LITERAL(4, 45, 1), // "x"
@@ -46,7 +46,7 @@ QT_MOC_LITERAL(10, 96, 3), // "dir"
 QT_MOC_LITERAL(11, 100, 13) // "updateHandler"
 
     },
-    "TetrisBattle\0createRectsignal\0\0"
+    "TetrisBattle\0createRectSignal\0\0"
     "componentName\0x\0y\0color\0startHandler\0"
     "stopHandler\0keyboardHandler\0dir\0"
     "updateHandler"
@@ -93,7 +93,7 @@ void TetrisBattle::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         auto *_t = static_cast<TetrisBattle *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->createRectsignal((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4]))); break;
+        case 0: _t->createRectSignal((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4]))); break;
         case 1: _t->startHandler(); break;
         case 2: _t->stopHandler(); break;
         case 3: _t->keyboardHandler((*reinterpret_cast< int(*)>(_a[1]))); break;
@@ -104,7 +104,7 @@ void TetrisBattle::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         int *result = reinterpret_cast<int *>(_a[0]);
         {
             using _t = void (TetrisBattle::*)(QString , int , int , QString );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&TetrisBattle::createRectsignal)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&TetrisBattle::createRectSignal)) {
                 *result = 0;
                 return;
             }
@@ -153,7 +153,7 @@ int TetrisBattle::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void TetrisBattle::createRectsignal(QString _t1, int _t2, int _t3, QString _t4)
+void TetrisBattle::createRectSignal(QString _t1, int _t2, int _t3, QString _t4)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t4))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);

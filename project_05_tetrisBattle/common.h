@@ -6,7 +6,7 @@
 #define TETRIS_WIDTH     (10)
 #define TETRIS_HEIGHT    (20)
 #define MAX_TETRIS_NUM   (TETRIS_WIDTH*TETRIS_HEIGHT)
-#define TETRIS_TYPE_LEN  (6)
+#define TETRIS_TYPE_LEN  (7)
 
 enum DIR_ENUM {
     DIR_NONE,
@@ -80,11 +80,11 @@ typedef struct _tetris_pos_t {
     },                       \
     .rect3 = {               \
         .x = 0,              \
-        .y = 4,              \
+        .y = 5,              \
     },                       \
     .rect4 = {               \
         .x = 0,              \
-        .y = 5,              \
+        .y = 4,              \
     },                       \
     .color = "blue",         \
 }                            \
@@ -140,11 +140,11 @@ typedef struct _tetris_pos_t {
     },                       \
     .rect3 = {               \
         .x = 0,              \
-        .y = 4,              \
+        .y = 5,              \
     },                       \
     .rect4 = {               \
         .x = 0,              \
-        .y = 5,              \
+        .y = 4,              \
     },                       \
     .color = "green",        \
 }                            \
@@ -189,6 +189,9 @@ typedef struct _tetris_pos_t {
     .color = "red",          \
 }                            \
 
+#define ROTATE_COR_REF      (2)   // Rotate the rect3 coordinate
 
+#define CW_MATRIX           {{0, -1}, {1, 0}}
+#define CCW_MATRIX          {{0, 1}, {-1, 0}}
 
 #endif /* COMMON_H */
