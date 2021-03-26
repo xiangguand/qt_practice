@@ -146,6 +146,7 @@ ApplicationWindow {
 
         Text {
             id: scoreTxt
+            objectName: "txt_score"
             text: qsTr("score: 0")
             anchors.left: parent.left
             anchors.top: parent.top

@@ -23,6 +23,7 @@ private:
     // Define the tetris battle map stack
     int tetrisMap[TETRIS_HEIGHT][TETRIS_WIDTH];
     int dir = DIR_NONE;
+    int score = 0;
     std::map<int, QString> tetris_decode = {
         {TETRIS_TYPE_NONE, "None"},
         {TETRIS_TYPE_I, "I shape"},

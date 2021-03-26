@@ -145,8 +145,7 @@ void TetrisBattle::handleKeyCW_CCW(int cw_ccw_mode) {
     else if(cw_ccw_mode == CCW_MODE){
         rotateCor = matmul(rawCoor, rotate_ccw_matrix);
     }
-    
-    qDebug() << "write";
+
     // find the mimimun and maximum
     int minX;
     int maxX;
@@ -176,6 +175,7 @@ void TetrisBattle::handleKeyCW_CCW(int cw_ccw_mode) {
         }
     }
 
+    // check the border
     if(maxX >= TETRIS_WIDTH) {
         for(int i=0;i<4;i++) {
             rotateCor[i][1] -= (maxX - TETRIS_WIDTH + 1);
@@ -197,6 +197,10 @@ void TetrisBattle::handleKeyCW_CCW(int cw_ccw_mode) {
         }
     }
 
+    // TODO: check the exist rectangle
+
+
+    // update the current tetris
     for(std::vector<int>::size_type i=0;i<rotateCor.size();i++) {
         this->each_rect[i].x = rotateCor[i][0];
         this->each_rect[i].y = rotateCor[i][1];
@@ -241,8 +245,12 @@ void TetrisBattle::checkLines(void) {
         }
     }
 
-    // @TODO update the score
-    qDebug() << "lines: " << lines;
+    // update the score
+    this->score += lines;
+    QObject *obj = this->root->findChild<QObject *>("txt_score");
+    if(obj != NULL) {
+        obj->setProperty("text", QStringLiteral("score: %1").arg(this->score));
+    }
     
     if(lines > 0) {
         QObject *temp;
@@ -283,8 +291,10 @@ void TetrisBattle::checkLines(void) {
                         this->tetrisMap[i+downL][j] = RECT_OK;
                         temp = this->root->findChild<QObject *>(QStringLiteral("rect%1").arg(i+j*TETRIS_HEIGHT));
                         temp->setProperty("visible", false);
+                        QVariant clr = temp->property("color");
                         temp = this->root->findChild<QObject *>(QStringLiteral("rect%1").arg(i+downL+j*TETRIS_HEIGHT));
                         temp->setProperty("visible", true);
+                        temp->setProperty("color", clr);
                     }
                 }
             }
