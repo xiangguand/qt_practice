@@ -215,12 +215,13 @@ void TetrisBattle::handleKeyHold(void) {
         }
     }
     int temp_tetris_type = this->hold_tetris_type;
-    this->hold_tetris_type = this->current_tetris_type;
     // First time
     if(hold_tetris_type == -1) {
+        this->hold_tetris_type = this->current_tetris_type;
         gernerateNewTetris();
     }
     else {
+        this->hold_tetris_type = this->current_tetris_type;
         gernerateNewTetris(temp_tetris_type);
     }
 }
