@@ -134,6 +134,8 @@ void TetrisBattle::handleKeyPut(void) {
 void TetrisBattle::handleKeyCW_CCW(int cw_ccw_mode) {
     std::vector<std::vector<int>> rawCoor = {{0, 0}, {0, 0}, {0, 0}, {0, 0}};
     std::vector<int> refCoor = {this->each_rect[ROTATE_COR_REF].x, this->each_rect[ROTATE_COR_REF].y};
+
+    // Move reference to origin
     for(std::vector<int>::size_type i=0;i<rawCoor.size();i++) {
         rawCoor[i][0] = this->each_rect[i].x - refCoor[0];
         rawCoor[i][1] = this->each_rect[i].y - refCoor[1];
@@ -152,6 +154,7 @@ void TetrisBattle::handleKeyCW_CCW(int cw_ccw_mode) {
     int minY;
     int maxY;
     for(std::vector<int>::size_type i=0;i<rotateCor.size();i++) {
+        // Move back from origin
         rotateCor[i][0] += refCoor[0];
         rotateCor[i][1] += refCoor[1];
         if(i == 0) {
@@ -198,7 +201,13 @@ void TetrisBattle::handleKeyCW_CCW(int cw_ccw_mode) {
     }
 
     // TODO: check the exist rectangle
-
+    for(std::vector<int>::size_type i=0;i<rawCoor.size();i++) {
+        if(this->tetrisMap[rotateCor[i][0]][rotateCor[i][1]] == RECT_OK) {
+            qDebug() << "Overlap !!!";
+            // can not rotate
+            return;
+        }
+    }
 
     // update the current tetris
     for(std::vector<int>::size_type i=0;i<rotateCor.size();i++) {
