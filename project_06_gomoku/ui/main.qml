@@ -99,7 +99,7 @@ ApplicationWindow {
 
         MouseArea {
             anchors.fill: parent
-            enabled: true
+            drag.target: parent
             onClicked: {
                 // sending the signal
                 mouseClickSignal(mouse.x, mouse.y)
@@ -148,7 +148,7 @@ ApplicationWindow {
                 console.debug("Reset")
                 resetSignal()
                 pieceCollector.forEach(function(item, index, array) {
-                    // console.log(item, index);
+                    // console.log(item, index);    
                     item.destroy()
                 });
                 pieceCollector = []

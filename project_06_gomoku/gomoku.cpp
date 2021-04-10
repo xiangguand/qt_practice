@@ -85,7 +85,7 @@ int Gomoku::checkIsWin(int x, int y) {
     /* ================================================= */
     // vertical
     cnt = 1;
-    for(int j=y+1;j<GOMOKU_HEIGHT;y++) {
+    for(int j=y+1;j<GOMOKU_HEIGHT;j++) {
         if(this->gomokuMap[j][x] == NONE_USER) {
             break;
         }
@@ -122,6 +122,8 @@ int Gomoku::checkIsWin(int x, int y) {
         }
         temp_cnt++;
     }
+    qDebug() << cnt;
+    temp_cnt = 1;
     while(((tempx-temp_cnt)>=0) && ((tempy-temp_cnt)>=0)) {
         if(this->gomokuMap[tempy-temp_cnt][tempx-temp_cnt] == NONE_USER) {
             break;
@@ -143,19 +145,21 @@ int Gomoku::checkIsWin(int x, int y) {
     tempy = y;
     temp_cnt = 1;
     while(((tempx-temp_cnt)>=0) && ((tempy+temp_cnt)<GOMOKU_HEIGHT)) {
-        if(this->gomokuMap[tempy-temp_cnt][tempx+temp_cnt] == NONE_USER) {
-            break;
-        }
-        else if(this->gomokuMap[tempy-temp_cnt][tempx+temp_cnt] == this->userMode) {
-            cnt++;
-        }
-        temp_cnt++;
-    }
-    while(((tempx+temp_cnt)<GOMOKU_WIDTH) && ((tempy-temp_cnt)>=0)) {
         if(this->gomokuMap[tempy+temp_cnt][tempx-temp_cnt] == NONE_USER) {
             break;
         }
         else if(this->gomokuMap[tempy+temp_cnt][tempx-temp_cnt] == this->userMode) {
+            cnt++;
+        }
+        temp_cnt++;
+    }
+    qDebug() << cnt;
+    temp_cnt = 1;
+    while(((tempx+temp_cnt)<GOMOKU_WIDTH) && ((tempy-temp_cnt)>=0)) {
+        if(this->gomokuMap[tempy-temp_cnt][tempx+temp_cnt] == NONE_USER) {
+            break;
+        }
+        else if(this->gomokuMap[tempy-temp_cnt][tempx+temp_cnt] == this->userMode) {
             cnt++;
         }
         temp_cnt++;
