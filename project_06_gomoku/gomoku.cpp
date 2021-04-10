@@ -7,7 +7,7 @@
 #include "gomoku.h"
 
 Gomoku::Gomoku(QObject *root) {
-    qDebug() << "Constructor TetrisBattle";
+    qDebug() << "Constructor Gomoku";
     this->root = root;
     this->infoText = this->root->findChild<QObject *>("infoWindow")->findChild<QObject *>("infoText");
     if(this->infoText != NULL) {
@@ -17,12 +17,12 @@ Gomoku::Gomoku(QObject *root) {
 }
 
 Gomoku::Gomoku(void) {
-    qDebug() << "Constructor TetrisBattle";
+    qDebug() << "Constructor Gomoku";
     Gomoku::clearMap();
 }
 
 Gomoku::~Gomoku(void) {
-    qDebug() << "Deconstruct TetrisBattle";
+    qDebug() << "Deconstruct Gomoku";
 }
 
 void Gomoku::init(void) {
@@ -84,4 +84,5 @@ void Gomoku::mouseClickHandler(int x, int y) {
 void Gomoku::resetHandler(void) {
     qDebug() << "reset";
     Gomoku::init();
+    showDialogSignal("Reset");
 }

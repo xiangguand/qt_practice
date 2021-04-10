@@ -16,13 +16,33 @@ ApplicationWindow {
 
     // Create piece
     function addPiece(componentName: string, x: int, y: int, color: string) {
-        var comp = Qt.createComponent("piece.qml")
-        var piece = comp.createObject(gameWindow)
-        piece.objectName = componentName
-        piece.x = x - piece.width / 2
-        piece.y = y - piece.width / 2
-        piece.color = color
-        pieceCollector.push(piece)
+        var component = Qt.createComponent("piece.qml")
+        if(component.status == Component.Ready) {
+            var piece = component.createObject(gameWindow)
+            piece.objectName = componentName
+            piece.x = x - piece.width / 2
+            piece.y = y - piece.width / 2
+            piece.color = color
+            pieceCollector.push(piece)
+        }
+        else {
+            console.error(component.errorString())
+        }
+    }
+
+    function showDialog(message: string) {
+        var component = Qt.createComponent("messageDialog.qml")
+        if(component.status == Component.Ready) {
+            var dialog = component.createObject(gameWindow)
+
+            dialog.title = qsTr("Result")
+            dialog.text = message
+
+            dialog.open()
+        } 
+        else {
+            console.error(component.errorString())
+        }
     }
 
     menuBar: MenuBar {

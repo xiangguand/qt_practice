@@ -22,6 +22,9 @@ int main(int argc, char *argv[]) {
                      item, SLOT(addPiece(QString, int, int, QString)));
     QObject::connect(item, SIGNAL(resetSignal()),
                       &gomoku, SLOT(resetHandler()));
+    QObject::connect(&gomoku, SIGNAL(showDialogSignal(QString)),
+                     item, SLOT(showDialog(QString)));
+
     qDebug() << "Execute";
     qDebug() << "=========================";
     return app.exec();

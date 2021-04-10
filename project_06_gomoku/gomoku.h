@@ -44,6 +44,7 @@ private:
 Q_OBJECT
 signals:
     void addPieseSignal(QString objName, int x, int y, QString color);
+    void showDialogSignal(QString message);
 
 public slots:
     void mouseClickHandler(int x, int y);

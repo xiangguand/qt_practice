@@ -1,6 +1,6 @@
 TEMPLATE = app
 
-QT += qml quick gui widgets
+QT += qml quick gui
 CONFIG += c++11
 CONFIG += console
 
