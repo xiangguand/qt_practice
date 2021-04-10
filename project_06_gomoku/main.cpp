@@ -1,6 +1,5 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include <QQuickItem>
 #include <QDebug>
 #include "gomoku.h"
 

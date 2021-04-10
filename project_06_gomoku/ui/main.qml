@@ -1,6 +1,6 @@
-import QtQuick 2.3
-import QtQuick.Window 2.2
-import QtQuick.Controls 2.3
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
 
 ApplicationWindow {
     id: root
@@ -99,6 +99,7 @@ ApplicationWindow {
 
         MouseArea {
             anchors.fill: parent
+            enabled: true
             onClicked: {
                 // sending the signal
                 mouseClickSignal(mouse.x, mouse.y)

@@ -10,6 +10,7 @@
 #include "common.h"
 
 #define USER_NUM     2
+#define NONE_USER    0
 #define BLACK_USER   1
 #define WHITE_USER   2
 
@@ -39,8 +40,9 @@ private:
     QObject *root;
     QObject *infoText;
     int userMode = BLACK_USER;
-    QString toggleUserColor(void);
-    
+    void toggleUserColor(void);
+    int checkIsWin(int x, int y);
+
 Q_OBJECT
 signals:
     void addPieseSignal(QString objName, int x, int y, QString color);
