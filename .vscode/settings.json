@@ -1,13 +1,6 @@
 {
     "files.associations": {
         "*.json": "json",
-        "iostream": "cpp",
-        "qdebug": "cpp",
-        "qqmlapplicationengine": "cpp",
-        "qquickitem": "cpp",
-        "qguiapplication": "cpp",
-        "qobject": "cpp",
-        "string": "cpp",
         "array": "cpp",
         "atomic": "cpp",
         "*.tcc": "cpp",
@@ -38,14 +31,17 @@
         "numeric": "cpp",
         "optional": "cpp",
         "ratio": "cpp",
+        "string": "cpp",
         "string_view": "cpp",
         "system_error": "cpp",
         "tuple": "cpp",
         "type_traits": "cpp",
         "utility": "cpp",
         "fstream": "cpp",
+        "future": "cpp",
         "initializer_list": "cpp",
         "iosfwd": "cpp",
+        "iostream": "cpp",
         "istream": "cpp",
         "limits": "cpp",
         "mutex": "cpp",
@@ -56,8 +52,6 @@
         "streambuf": "cpp",
         "thread": "cpp",
         "typeinfo": "cpp",
-        "variant": "cpp",
-        "qpainter": "cpp",
-        "qthread": "cpp"
+        "variant": "cpp"
     }
 }
