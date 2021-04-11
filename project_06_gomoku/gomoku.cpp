@@ -60,50 +60,51 @@ void Gomoku::toggleUserColor(void) {
 int Gomoku::checkIsWin(int x, int y) {
     // Check the four direction, horizontal, vertical and Diagnal
     int cnt = 1;
+    int current_user = this->userMode;
     
     // horizontal
     for(int i=x+1;i<GOMOKU_WIDTH;i++) {
-        if(this->gomokuMap[y][i] == NONE_USER) {
-            break;
-        }
-        else if(this->gomokuMap[y][i] == this->userMode) {
+        if(this->gomokuMap[y][i] == current_user) {
             cnt++;
+        }
+        else {
+            break;
         }
     }
     for(int i=x-1;i>=0;i--) {
-        if(this->gomokuMap[y][i] == NONE_USER) {
-            break;
-        }
-        else if(this->gomokuMap[y][i] == this->userMode) {
+        if(this->gomokuMap[y][i] == current_user) {
             cnt++;
+        }
+        else {
+            break;
         }
     }
     qDebug() << "horizontal count:" << cnt;
     if(cnt >= 5) {
-        return this->userMode;
+        return current_user;
     }
     /* ================================================= */
     // vertical
     cnt = 1;
     for(int j=y+1;j<GOMOKU_HEIGHT;j++) {
-        if(this->gomokuMap[j][x] == NONE_USER) {
-            break;
-        }
-        else if(this->gomokuMap[j][x] == this->userMode) {
+        if(this->gomokuMap[j][x] == current_user) {
             cnt++;
+        }
+        else {
+            break;
         }
     }
     for(int j=y-1;j>=0;j--) {
-        if(this->gomokuMap[j][x] == NONE_USER) {
-            break;
-        }
-        else if(this->gomokuMap[j][x] == this->userMode) {
+        if(this->gomokuMap[j][x] == current_user) {
             cnt++;
+        }
+        else {
+            break;
         }
     }
     qDebug() << "vertical count:" << cnt;
     if(cnt >= 5) {
-        return this->userMode;
+        return current_user;
     }
 
     /* ================================================= */
@@ -114,28 +115,28 @@ int Gomoku::checkIsWin(int x, int y) {
     tempy = y;
     temp_cnt = 1;
     while(((tempx+temp_cnt)<GOMOKU_WIDTH) && ((tempy+temp_cnt)<GOMOKU_HEIGHT)) {
-        if(this->gomokuMap[tempy+temp_cnt][tempx+temp_cnt] == NONE_USER) {
-            break;
-        }
-        else if(this->gomokuMap[tempy+temp_cnt][tempx+temp_cnt] == this->userMode) {
+        if(this->gomokuMap[tempy+temp_cnt][tempx+temp_cnt] == current_user) {
             cnt++;
+        }
+        else {
+            break;
         }
         temp_cnt++;
     }
     qDebug() << cnt;
     temp_cnt = 1;
     while(((tempx-temp_cnt)>=0) && ((tempy-temp_cnt)>=0)) {
-        if(this->gomokuMap[tempy-temp_cnt][tempx-temp_cnt] == NONE_USER) {
-            break;
-        }
-        else if(this->gomokuMap[tempy-temp_cnt][tempx-temp_cnt] == this->userMode) {
+        if(this->gomokuMap[tempy-temp_cnt][tempx-temp_cnt] == current_user) {
             cnt++;
+        }
+        else {
+            break;
         }
         temp_cnt++;
     }
     qDebug() << "diagonal 1 count:" << cnt;
     if(cnt >= 5) {
-        return this->userMode;
+        return current_user;
     }
 
     /* ================================================= */
@@ -145,28 +146,28 @@ int Gomoku::checkIsWin(int x, int y) {
     tempy = y;
     temp_cnt = 1;
     while(((tempx-temp_cnt)>=0) && ((tempy+temp_cnt)<GOMOKU_HEIGHT)) {
-        if(this->gomokuMap[tempy+temp_cnt][tempx-temp_cnt] == NONE_USER) {
-            break;
-        }
-        else if(this->gomokuMap[tempy+temp_cnt][tempx-temp_cnt] == this->userMode) {
+        if(this->gomokuMap[tempy+temp_cnt][tempx-temp_cnt] == current_user) {
             cnt++;
+        }
+        else {
+            break;
         }
         temp_cnt++;
     }
     qDebug() << cnt;
     temp_cnt = 1;
     while(((tempx+temp_cnt)<GOMOKU_WIDTH) && ((tempy-temp_cnt)>=0)) {
-        if(this->gomokuMap[tempy-temp_cnt][tempx+temp_cnt] == NONE_USER) {
-            break;
-        }
-        else if(this->gomokuMap[tempy-temp_cnt][tempx+temp_cnt] == this->userMode) {
+        if(this->gomokuMap[tempy-temp_cnt][tempx+temp_cnt] == current_user) {
             cnt++;
+        }
+        else {
+            break;
         }
         temp_cnt++;
     }
     qDebug() << "diagonal 2 count:" << cnt;
     if(cnt >= 5) {
-        return this->userMode;
+        return current_user;
     }
 
     return NONE_USER;
@@ -195,7 +196,7 @@ void Gomoku::mouseClickHandler(int x, int y) {
         this->collectPiece.push_back(objName);
         this->pieceCnt++;
         Gomoku::toggleUserColor();
-        // Gomoku::showMap();
+        Gomoku::showMap();
     }
 }
 
