@@ -196,7 +196,7 @@ void Gomoku::mouseClickHandler(int x, int y) {
         this->collectPiece.push_back(objName);
         this->pieceCnt++;
         Gomoku::toggleUserColor();
-        Gomoku::showMap();
+        // Gomoku::showMap();
     }
 }
 
