@@ -3,7 +3,7 @@
 #include <ctime>
 #include <QDebug>
 #include <vector>
-
+#include <QVariant>
 #include "gomoku.h"
 
 Gomoku::Gomoku(QObject *root) {
