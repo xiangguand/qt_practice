@@ -67,8 +67,8 @@ dkms.conf
 Makefile
 Makefile.Debug
 Makefile.Release
-./debug/*
-./release/*
+*/debug/*
+*/release/*
 
 *.bat
 *.sh
