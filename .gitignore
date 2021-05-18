@@ -73,3 +73,5 @@ Makefile.Release
 *.bat
 *.sh
 
+!*CMakeLists.txt
+
